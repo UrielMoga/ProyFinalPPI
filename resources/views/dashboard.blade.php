@@ -7,9 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <a href="/admin"> Haga click aquí para entrar al panel de administrador</a>
-            </div>
+                <a style="background: rgb(59 130 246); padding: 15px; color:white; font-size: 3em;" href="/admin">Haga click aquí para entrar al panel de administrador</a>
         </div>
     </div>
 </x-app-layout>
