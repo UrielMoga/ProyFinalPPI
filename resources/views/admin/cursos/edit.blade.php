@@ -14,7 +14,7 @@
 @endif
 <div class="card">
         <div class="card-body">
-            {!! Form::model($curso,['route'=>['admin.cursos.update',$curso], 'method'=>'put']) !!}
+            {!! Form::model($curso,['route'=>['admin.cursos.update',$curso], 'method'=>'put', 'enctype'=>'multipart/form-data']) !!}
             <div class="form-group">
                  {!! Form::label('nombre', 'Nombre') !!}
                  {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre del curso']) !!}
@@ -40,6 +40,14 @@
                  {!! Form::label('categoria', 'Categoria') !!}
                  {!! Form::text('categoria', null, ['class' => 'form-control', 'placeholder' => 'Categoria del Curso']) !!}
                  @error('categoria')
+                 <span class="text-danger">{{$message}}<span>
+                 @enderror
+            </div>
+            <div class="form-group">
+                 {!! Form::label('archivo', 'Archivo') !!}<br>
+                 <img src="/img/{{$curso->rutaimagen}}" width="150px"><br><br>
+                 {!! Form::file('archivo') !!}
+                 @error('archivo')
                  <span class="text-danger">{{$message}}<span>
                  @enderror
             </div>

@@ -9,7 +9,8 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route'=>'admin.cursos.store']) !!}
+            {!! Form::open(['route'=>'admin.cursos.store','enctype'=>'multipart/form-data']) !!}
+          
             <div class="form-group">
                  {!! Form::label('nombre', 'Nombre') !!}
                  {!! Form::text('nombre', null, ['class' => 'form-control', 'placeholder' => 'Nombre del Curso']) !!}
@@ -35,6 +36,13 @@
                  {!! Form::label('categoria', 'Categoria') !!}
                  {!! Form::text('categoria', null, ['class' => 'form-control', 'placeholder' => 'Categoria del Curso']) !!}
                  @error('categoria')
+                 <span class="text-danger">{{$message}}<span>
+                 @enderror
+            </div>
+            <div class="form-group">
+                 {!! Form::label('archivo', 'Archivo') !!}
+                 {!! Form::file('archivo') !!}
+                 @error('archivo')
                  <span class="text-danger">{{$message}}<span>
                  @enderror
             </div>

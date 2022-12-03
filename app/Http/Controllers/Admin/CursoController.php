@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Curso; 
+use App\Models\Image; 
 
 class CursoController extends Controller
 {
@@ -44,8 +45,18 @@ class CursoController extends Controller
             ['nombre'=>'required',
             'precio' =>'required',
             'ruta'=>'required',
+            'archivo'=>'required',
             'categoria' =>'required',
             'descripcion'=>'required',
+            ]
+        );
+
+        $nameImage = $request->archivo->getClientOriginalName();
+
+        $request->archivo->move(public_path('img'), $nameImage);
+
+        $request->merge(
+            ['rutaimagen'=>$nameImage,
             ]
         );
 
@@ -92,8 +103,18 @@ class CursoController extends Controller
             ['nombre'=>'required',
             'precio' =>'required',
             'ruta'=>'required',
+            'archivo'=>'required',
             'categoria' =>'required',
             'descripcion'=>'required',
+            ]
+        );
+
+        $nameImage = $request->archivo->getClientOriginalName();
+
+        $request->archivo->move(public_path('img'), $nameImage);
+
+        $request->merge(
+            ['rutaimagen'=>$nameImage,
             ]
         );
 

@@ -317,10 +317,26 @@ return [
             'icon'        => 'fa-solid fa-gauge',
             'label_color' => 'success',
         ],
+        ['header' => 'Alumnos'],
+        [
+            'text' => 'Alumnos',
+            'route'  => 'admin.alumnos.index',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Resumen de inscripciones de Alumnos',
+            'route'  => 'admin.resumen.alumnos.index',
+            'icon' => 'fas fa-fw fa-user',
+        ],
         ['header' => 'Cursos'],
         [
             'text' => 'Cursos',
             'route'  => 'admin.cursos.index',
+            'icon' => 'fas fa-solid fa-leaf',
+        ],
+        [
+            'text' => 'Resumen de inscripciones a Cursos',
+            'route'  => 'admin.resumen.cursos.index',
             'icon' => 'fas fa-solid fa-leaf',
         ],
         ['header' => 'Preferencias de Cuenta'],

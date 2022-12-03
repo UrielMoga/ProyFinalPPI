@@ -17,10 +17,14 @@ class CreateCursoTable extends Migration
             $table->id();
             $table->string('nombre')->nullable(false);
             $table->decimal('precio', $precision=8,$escala=2)->nullable(false);
-            $table->string('ruta')->nullable(false);
-            $table->string('categoria')->nullable(false);
+            $table->text('ruta')->nullable(false);
+            $table->foreignId('categoria')->nullable(false);
+            $table->text('archivo')->nullable(false);
+            $table->text('rutaimagen')->nullable(false);
             $table->string('descripcion');
             $table->timestamps();
+
+            $table->foreign('categoria')->references('id')->on('categorias');
         });
     }
 
