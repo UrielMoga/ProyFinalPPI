@@ -14,6 +14,7 @@
 @endif
     <div class="card-header">
         <a href="{{route('admin.alumnos.create')}}" class="btn btn-primary">Nuevo alumno</a>
+        <a href="/admin/exportar-alumnos" class="btn btn-primary">Descargar lista de alumnos</a>
     </div> 
     <div class="card">
         <div class="card-body">
@@ -22,7 +23,7 @@
                     <tr>
                         <th>ID</th>
                         <th>NOMBRE</th>
-                        <th colspan="2"></th>
+                        <th colspan="1"></th>
                     <tr>
                 </thead>
                 <tbody>
@@ -31,13 +32,6 @@
                         <td>{{$alumn->id}}</td>
                         <td>{{$alumn->nombre}}</td>
                         <td width="15px"><a href="{{route('admin.alumnos.edit',$alumn)}}" class="btn btn-primary btn-sm">Editar</a></td>
-                        <td width="15px">
-                            <form action="{{route('admin.alumnos.destroy',$alumn)}}" method="POST">
-                                @method('delete')
-                                @csrf
-                                <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
-                            </form>
-                        </td>
                     <tr>
                     @endforeach
                 </tbody>

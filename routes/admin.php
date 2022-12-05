@@ -7,8 +7,14 @@ use App\Http\Controllers\Admin\CursoController;
 use App\Http\Controllers\Admin\AlumnoController;
 use App\Http\Controllers\Admin\AlumnoCursoController;
 use App\Http\Controllers\Admin\CursoAlumnoController;
+use App\Exports\Admin\AlumnoExport;
 
 Route::get('', [HomeController::class, 'index']);
+
+Route::get('/exportar-alumnos', function(){
+    $alumnosExport = new AlumnoExport;
+    return $alumnosExport->download('alumnos.xlsx');
+});
 
 Route::resource('/curso', CursoController::class)->names('admin.cursos');
 

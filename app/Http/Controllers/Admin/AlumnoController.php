@@ -16,7 +16,8 @@ class AlumnoController extends Controller
     public function index()
     {
         //
-        $alumno = Alumno::all();
+        
+        $alumno = Alumno::All()->where('activo', 'si');
         return view('admin.alumnos.index', compact('alumno'));
     }
 
@@ -40,8 +41,16 @@ class AlumnoController extends Controller
     public function store(Request $request)
     {
         //
+
+        $request->merge(
+            [
+            'activo'=>"si"
+            ]
+        );
+
         $request->validate(
             ['nombre'=>'required',
+            'activo'=>'required'
             ]
         );
 
@@ -55,7 +64,7 @@ class AlumnoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Curso $curso)
+    public function show(Alumno $alumno)
     {
         //
         return view('admin.alumnos.show');
@@ -82,9 +91,9 @@ class AlumnoController extends Controller
      */
     public function update(Request $request, Alumno $alumno)
     {
-        //
         $request->validate(
             ['nombre'=>'required',
+            'activo'=>'required'
             ]
         );
 

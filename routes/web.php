@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Auth\GoogleController;
+use App\Models\Admin\Curso; 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $cursos = Curso::all();
+    return view('welcome',compact('cursos'));
 });
 
 Route::middleware([
@@ -26,3 +28,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+

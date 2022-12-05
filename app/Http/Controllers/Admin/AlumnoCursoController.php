@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class AlumnoCursoController extends Controller
 {
     public function index(){
-        $alumno = Alumno::all();
+        $alumno = Alumno::All()->where('activo', 'si');
         return view('admin/cursos-alumnos/index',compact('alumno'));
     }
    

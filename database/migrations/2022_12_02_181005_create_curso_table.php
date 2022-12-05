@@ -22,9 +22,11 @@ class CreateCursoTable extends Migration
             $table->text('archivo')->nullable(false);
             $table->text('rutaimagen')->nullable(false);
             $table->string('descripcion');
+            $table->foreignId('usrins')->nullable(false);
             $table->timestamps();
 
             $table->foreign('categoria')->references('id')->on('categorias');
+            $table->foreign('usrins')->references('id')->on('users');
         });
     }
 

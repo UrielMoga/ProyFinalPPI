@@ -52,13 +52,16 @@ class CursoController extends Controller
         );
 
         $nameImage = $request->archivo->getClientOriginalName();
+        $usuario = auth()->id();
 
         $request->archivo->move(public_path('img'), $nameImage);
 
         $request->merge(
             ['rutaimagen'=>$nameImage,
+            'usrins'=>$usuario
             ]
         );
+
 
         $curso = Curso::create($request->all());
         return redirect()->route('admin.cursos.edit',$curso)->with('mensaje','El curso se ha guardado exitosamente');
@@ -85,7 +88,7 @@ class CursoController extends Controller
      */
     public function edit(Curso $curso)
     {
-        //
+        $this->authorize('usrins', $curso);
         return view('admin.cursos.edit', compact('curso'));
     }
 
@@ -98,7 +101,7 @@ class CursoController extends Controller
      */
     public function update(Request $request, Curso $curso)
     {
-        //
+        $this->authorize('usrins', $curso);
         $request->validate(
             ['nombre'=>'required',
             'precio' =>'required',
@@ -110,13 +113,16 @@ class CursoController extends Controller
         );
 
         $nameImage = $request->archivo->getClientOriginalName();
+        $usuario = auth()->id();
 
         $request->archivo->move(public_path('img'), $nameImage);
 
         $request->merge(
             ['rutaimagen'=>$nameImage,
+            'usrins'=>$usuario
             ]
         );
+
 
         $curso ->update($request->all());
         return redirect()->route('admin.cursos.edit',$curso)->with('mensaje','El curso se ha actualizado exitosamente');
@@ -130,6 +136,7 @@ class CursoController extends Controller
      */
     public function destroy(Curso $curso)
     {
+        $this->authorize('usrins', $curso);
         $curso -> delete();
         return redirect()->route('admin.cursos.index')->with('mensaje','El curso se ha eliminado exitosamente');
   

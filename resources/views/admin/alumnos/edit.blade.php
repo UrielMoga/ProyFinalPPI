@@ -23,6 +23,14 @@
                  @enderror
             </div>
 
+            <div class="form-group">
+                 {!! Form::label('activo', 'Activo') !!}
+                 {!! Form::radio('activo', 'si') !!}Si     
+                 {!! Form::radio('activo', 'no') !!}No
+                 @error('nombre')
+                 <span class="text-danger">{{$message}}<span>
+                 @enderror
+            </div>
             {!! Form::submit('Actualizar alumno',['class' => 'btn btn-primary btn-sm']) !!}
 
              {!! Form::close() !!}

@@ -20,8 +20,8 @@
             }
         </style>
     </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+    <body class="antialiased bg-gray-100 dark:bg-gray-900" >
+        <div class="relative items-top justify-center bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -35,10 +35,19 @@
                     @endauth
                 </div>
             @endif
-
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <img src="../img/logocrud.png" style="width:100%; margin:auto;">
-            </div>
         </div>
+
+                   
+
+
+            @foreach($cursos as $curso)
+                    <div style="margin: 25px; padding: 30px;">
+                        <center>
+                    <h1 style="color:white">{{$curso->nombre}}</h1>
+                    <a href="{{$curso->ruta}}"><img src="/img/{{$curso->rutaimagen}}" width="300px"></a>
+        </center>
+                    </div><br>
+        @endforeach
+
     </body>
 </html>
